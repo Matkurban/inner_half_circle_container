@@ -12,7 +12,9 @@ class ExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Inner Half Circle Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo)),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+      ),
       home: const DemoPage(),
     );
   }
@@ -108,7 +110,11 @@ class _SampleCard extends StatelessWidget {
 }
 
 class _Sample {
-  const _Sample({required this.title, required this.subtitle, required this.notches});
+  const _Sample({
+    required this.title,
+    required this.subtitle,
+    required this.notches,
+  });
 
   final String title;
   final String subtitle;

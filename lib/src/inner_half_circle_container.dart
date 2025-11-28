@@ -66,7 +66,10 @@ class InnerHalfCircleContainer extends StatelessWidget {
     );
 
     content = ClipPath(
-      clipper: _MultiInwardHalfCircleClipper(notches: notches, borderRadius: borderRadius),
+      clipper: _MultiInwardHalfCircleClipper(
+        notches: notches,
+        borderRadius: borderRadius,
+      ),
       child: content,
     );
 
@@ -77,21 +80,27 @@ class InnerHalfCircleContainer extends StatelessWidget {
   }
 }
 
-
-
 /// 多个缺口的数据模型。
 class HalfCircleNotch {
-  const HalfCircleNotch({required this.edge, required this.center, required this.radius});
+  const HalfCircleNotch({
+    required this.edge,
+    required this.center,
+    required this.radius,
+  });
   final NotchEdge edge;
   final double center; // 圆心在该边方向的偏移
   final double radius; // 半径
   @override
-  String toString() => 'HalfCircleNotch(edge: $edge, center: $center, radius: $radius)';
+  String toString() =>
+      'HalfCircleNotch(edge: $edge, center: $center, radius: $radius)';
 }
 
 // 移除了 _InwardHalfCircleClipper，统一使用多缺口裁剪器。
 class _MultiInwardHalfCircleClipper extends CustomClipper<Path> {
-  _MultiInwardHalfCircleClipper({required this.notches, required this.borderRadius});
+  _MultiInwardHalfCircleClipper({
+    required this.notches,
+    required this.borderRadius,
+  });
   final List<HalfCircleNotch> notches;
   final BorderRadius borderRadius;
   @override
@@ -132,7 +141,8 @@ class _MultiInwardHalfCircleClipper extends CustomClipper<Path> {
     for (int i = 0; i < notches.length; i++) {
       final a = notches[i];
       final b = oldClipper.notches[i];
-      if (a.edge != b.edge || a.center != b.center || a.radius != b.radius) return true;
+      if (a.edge != b.edge || a.center != b.center || a.radius != b.radius)
+        return true;
     }
     return false;
   }
